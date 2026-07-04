@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="英語穴埋め">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>英語穴埋め学習 iPhone対応版</title>
+<style>
+:root{
+  --blue:#2563eb;--green:#16a34a;--orange:#f59e0b;--red:#dc2626;
+  --bg:#f5f7fb;--card:#fff;--text:#111827;--muted:#6b7280;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  max-width:980px;margin:0 auto;
+  padding:calc(12px + env(safe-area-inset-top)) 12px calc(24px + env(safe-area-inset-bottom));
+  background:var(--bg);color:var(--text);
+}
+.card{background:var(--card);padding:16px;border-radius:16px;box-shadow:0 2px 10px rgba(0,0,0,.08);margin-bottom:14px}
+h1{font-size:1.35rem;text-align:center;margin:8px 0 14px}
+h2{font-size:1.15rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{
+  padding:12px 14px;margin:5px 0;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:16px;
+  touch-action:manipulation;
+}
+.primary{background:var(--blue);color:white}.success{background:var(--green);color:white}.star{background:var(--orange);color:white}.danger{background:var(--red);color:white}.plain{background:#e5e7eb}
+input,textarea{
+  width:100%;padding:12px;border:1px solid #d1d5db;border-radius:12px;
+  font-size:16px;margin:6px 0;background:#fff;color:#111827;
+}
+textarea{min-height:160px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.progress{font-weight:700;color:var(--muted);margin-bottom:14px}
+.jp{text-align:center;font-size:1.22rem;margin:16px 0}
+.en{text-align:center;font-size:1.08rem;line-height:1.8;margin:14px 0 18px}
+.answer-row{display:flex;align-items:center;gap:10px}
+.answer-label{min-width:34px;font-weight:700}
+.correct{color:var(--green)}.wrong{color:var(--red)}
+.hidden{display:none!important}
+.small{font-size:.9rem;color:var(--muted)}
+.badge{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;padding:4px 10px;margin:2px;font-size:.86rem}
+.notice{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;padding:12px;margin:10px 0;white-space:pre-wrap}
+.oknotice{background:#ecfdf5;border:1px solid #bbf7d0;color:#166534;border-radius:12px;padding:12px;margin:10px 0;white-space:pre-wrap}
+.errnotice{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:12px;padding:12px;margin:10px 0;white-space:pre-wrap}
+.grid{display:grid;grid-template-columns:1fr 1.2fr;gap:14px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}body{padding-left:10px;padding-right:10px}.card{padding:14px}}
+.listbox{max-height:330px;overflow:auto;border:1px solid #e5e7eb;border-radius:12px;padding:8px;background:#fafafa;-webkit-overflow-scrolling:touch}
+.qitem{border:1px solid #e5e7eb;background:#fff;border-radius:10px;padding:10px;margin:6px 0;cursor:pointer}
+.qitem.active{border-color:var(--blue);background:#eff6ff}
+.qid{font-weight:800;color:#374151}.qjp{font-size:.92rem;margin-top:3px}.qen{font-size:.86rem;color:#6b7280;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>英語穴埋め学習 iPhone対応版</h1>
+<div id="topStatus" class="notice">未読み込み：JSONを貼り付けて「JSONを読み込む」を押してください。</div>
+
+<div class="row">
+<button id="btnStart" class="primary" type="button">通常学習</button>
+<button id="btnManualReview" class="plain" type="button">保存した問題を復習</button>
+<button id="btnWrongReview" class="plain" type="button">間違えた問題を復習</button>
+<button id="btnClear" class="danger" type="button">履歴を消去</button>
+</div>
+<div id="stats"></div>
+</div>
+
+<div id="quizCard" class="card">
+<p>まだ問題がありません。下にquestions.jsonの中身を貼り付けてください。</p>
+</div>
+
+<div class="card">
+<h2>JSONを貼り付けて読み込む</h2>
+<p class="small">
+iPhoneでは、Files/Drive上のJSONファイルをHTMLから直接選ぶより、JSON本文をコピーして貼り付ける方式が安定します。
+</p>
+<textarea id="jsonArea" placeholder='[{"id":4001,"jp":"日本語訳","en":"I (①) English.","answers":["study"]}]'></textarea>
+<div id="jsonLoadStatus" class="notice">未読み込み</div>
+<div class="row">
+<button id="btnLoadJson" class="primary" type="button">JSONを読み込む</button>
+<button id="btnPaste" class="plain" type="button">貼り付け</button>
+<button id="btnCopyJson" class="plain" type="button">現在のJSONをコピー</button>
+<button id="btnDownload" class="plain" type="button">questions.jsonとして保存</button>
+</div>
+<p class="small">
+Safariで使う場合は、共有ボタンから「ホーム画面に追加」するとアプリのように起動できます。
+</p>
+</div>
+
+<div class="card">
+<h2>読み込んだJSONを編集</h2>
+<div class="grid">
+<div>
+<input id="searchBox" placeholder="検索：日本語・英語・ID">
+<div class="row">
+<button id="btnNew" class="plain" type="button">＋ 新規問題</button>
+<button id="btnRenumber" class="plain" type="button">IDを連番に振り直す</button>
+</div>
+<div id="questionList" class="listbox"><p class="small">問題一覧がここに表示されます。</p></div>
+</div>
+
+<div>
+<label>ID</label><input id="editId" placeholder="例: 4001">
+<label>日本語訳 jp</label><textarea id="editJp"></textarea>
+<label>穴埋め英文 en</label><textarea id="editEn"></textarea>
+<label>答え answers（1行に1語）</label><textarea id="editAnswers"></textarea>
+<div class="row">
+<button id="btnSaveEdit" class="success" type="button">編集を保存</button>
+<button id="btnDeleteEdit" class="danger" type="button">削除</button>
+<button id="btnPreviewEdit" class="plain" type="button">プレビュー</button>
+</div>
+<div id="editPreview" class="notice hidden"></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>ChatGPT用プロンプト</h2>
+<textarea id="promptText" readonly style="min-height:240px">この画像の英語教材を、英語穴埋め学習アプリ用のJSONに変換してください。
+
+出力形式はJSON配列のみ：
+[
+  {
+    "id": 数値,
+    "jp": "日本語訳",
+    "en": "英語文。重要語を単語ごとに(①)(②)のような空欄にする",
+    "answers": ["①の答え", "②の答え"]
+  }
+]
+
+ルール：
+- 赤字と青字の英単語・英熟語をすべて穴埋め対象にする
+- 熟語も単語ごとに分ける
+- enの空欄番号とanswersの順番を必ず対応させる
+- 日本語訳は教材に書かれている日本語を使う
+- JSON以外の説明文、Markdown、```json は出力しない</textarea>
+<button id="btnCopyPrompt" class="primary" type="button">プロンプトをコピー</button>
+</div>
+
+<script>
+(function(){
+"use strict";
+const nums=["①","②","③","④","⑤","⑥","⑦","⑧","⑨","⑩","⑪","⑫","⑬","⑭","⑮","⑯","⑰","⑱","⑲","⑳"];
+const STORAGE_KEY="englishQuizQuestionsIOSV1";
+const MANUAL_KEY="manualReviewIdsIOSV1";
+const WRONG_KEY="wrongIdsIOSV1";
+
+let allQuestions=[];
+let questions=[];
+let current=0;
+let correctCount=0;
+let modeName="通常学習";
+let selectedQuestionIndex=-1;
+
+const $=(id)=>document.getElementById(id);
+
+function setStatus(msg,type){$("topStatus").textContent=msg;$("topStatus").className=type||"notice";}
+function setJsonStatus(msg,type){$("jsonLoadStatus").textContent=msg;$("jsonLoadStatus").className=type||"notice";}
+function normalize(s){return String(s||"").trim().toLowerCase().replace(/\s+/g," ");}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function getIds(key){try{return JSON.parse(localStorage.getItem(key)||"[]").map(String)}catch(e){return []}}
+function setIds(key,val){localStorage.setItem(key,JSON.stringify([...new Set(val.map(String))]));}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+
+function stripCodeFence(text){
+ let t=String(text||"").trim();
+ if(t.charCodeAt(0)===0xFEFF)t=t.slice(1);
+ t=t.replace(/^\uFEFF/,"").trim();
+ if(t.startsWith("```"))t=t.replace(/^```(?:json|JSON)?\s*/,"").replace(/\s*```$/,"").trim();
+ return t;
+}
+function parseQuestionJSON(text){
+ const clean=stripCodeFence(text);
+ if(!clean)throw new Error("貼り付け欄が空です。");
+ let data;
+ try{data=JSON.parse(clean);}
+ catch(e){
+   const a=clean.indexOf("[");const b=clean.lastIndexOf("]");
+   if(a!==-1&&b!==-1&&b>a)data=JSON.parse(clean.slice(a,b+1));
+   else throw new Error("JSONとして解析できません: "+e.message);
+ }
+ if(Array.isArray(data))return data;
+ if(data&&Array.isArray(data.questions))return data.questions;
+ if(data&&Array.isArray(data.data))return data.data;
+ throw new Error("JSONの最上位は配列、または {questions:[...]} にしてください。");
+}
+function validateQuestions(data){
+ if(!Array.isArray(data))throw new Error("JSONの最上位は配列にしてください。");
+ return data.map((q,i)=>{
+   if(!q||typeof q!=="object")throw new Error((i+1)+"番目がオブジェクトではありません。");
+   if(q.id===undefined||q.id===null||q.id==="")q.id=Date.now()+i;
+   if(typeof q.jp!=="string")throw new Error((i+1)+"番目の jp がありません。");
+   if(typeof q.en!=="string")throw new Error((i+1)+"番目の en がありません。");
+   if(!Array.isArray(q.answers))throw new Error((i+1)+"番目の answers が配列ではありません。");
+   return {id:String(q.id),jp:q.jp,en:q.en,answers:q.answers.map(String)};
+ });
+}
+function saveQuestionsToDevice(){
+ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(allQuestions));return true;}
+ catch(e){setStatus("端末内保存に失敗しました: "+e.message,"errnotice");return false;}
+}
+function updateStats(){
+ $("stats").innerHTML=`<span class="badge">総問題数 ${allQuestions.length}</span>
+ <span class="badge">保存済み ${getIds(MANUAL_KEY).length}</span>
+ <span class="badge">間違えた問題 ${getIds(WRONG_KEY).length}</span>`;
+}
+
+function loadFromTextareaAndSave(){
+ try{
+   setJsonStatus("JSONを解析中...","notice");
+   const validated=validateQuestions(parseQuestionJSON($("jsonArea").value));
+   allQuestions=validated;selectedQuestionIndex=-1;
+   const saved=saveQuestionsToDevice();
+   updateStats();renderQuestionList();renderQuizCard();
+   modeName="通常学習";questions=shuffle([...allQuestions]);current=0;correctCount=0;loadQuestion();
+   const msg=`${allQuestions.length}問を読み込みました。${saved?"端末内にも保存しました。":"端末内保存には失敗しました。"}`;
+   setStatus(msg,saved?"oknotice":"errnotice");setJsonStatus(msg,saved?"oknotice":"errnotice");
+   window.scrollTo(0,0);
+ }catch(e){
+   const msg="JSONの読み込みに失敗しました。\n\n原因:\n"+e.message+
+   "\n\n確認してください:\n- 全体が [ ... ] で囲まれている\n- jp, en, answers がある\n- answers が配列になっている";
+   setStatus(msg,"errnotice");setJsonStatus(msg,"errnotice");
+ }
+}
+
+async function pasteFromClipboard(){
+ try{
+   const text=await navigator.clipboard.readText();
+   $("jsonArea").value=text;
+   setJsonStatus("貼り付けました。次に「JSONを読み込む」を押してください。","oknotice");
+ }catch(e){
+   setJsonStatus("自動貼り付けできません。入力欄を長押しして手動で貼り付けてください。","errnotice");
+ }
+}
+async function copyCurrentJSON(){
+ if(!allQuestions.length){alert("コピーする問題がありません。");return;}
+ const text=JSON.stringify(allQuestions,null,2);
+ try{await navigator.clipboard.writeText(text);setStatus("現在のJSONをコピーしました。","oknotice");}
+ catch(e){$("jsonArea").value=text;setStatus("自動コピーできないため、貼り付け欄にJSONを表示しました。","notice");}
+}
+function downloadCurrentJSON(){
+ if(!allQuestions.length){alert("保存する問題がありません。");return;}
+ const blob=new Blob([JSON.stringify(allQuestions,null,2)],{type:"application/json"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="questions.json";a.click();URL.revokeObjectURL(a.href);
+}
+
+function renderQuizCard(){
+ $("quizCard").innerHTML=`<div id="progress" class="progress"></div><div id="jp" class="jp"></div><div id="en" class="en"></div><div id="inputs"></div><button id="checkBtn" class="primary" type="button">答え合わせ</button><div id="result"></div><div id="reviewArea" class="hidden"><button id="saveBtn" class="star" type="button">☆ 復習リストに追加</button></div><button id="nextBtn" class="success hidden" type="button">次の問題</button>`;
+ $("checkBtn").addEventListener("click",checkAnswer);$("saveBtn").addEventListener("click",saveForReview);$("nextBtn").addEventListener("click",nextQuestion);
+}
+function startNormal(){
+ if(!allQuestions.length){setStatus("問題が読み込まれていません。JSONを貼り付けてください。","errnotice");return;}
+ renderQuizCard();modeName="通常学習";questions=shuffle([...allQuestions]);current=0;correctCount=0;loadQuestion();
+}
+function startManualReview(){
+ const ids=getIds(MANUAL_KEY);questions=allQuestions.filter(q=>ids.includes(String(q.id)));
+ if(!questions.length){alert("保存した問題はありません");return;}
+ renderQuizCard();modeName="保存した問題の復習";questions=shuffle(questions);current=0;correctCount=0;loadQuestion();
+}
+function startWrongReview(){
+ const ids=getIds(WRONG_KEY);questions=allQuestions.filter(q=>ids.includes(String(q.id)));
+ if(!questions.length){alert("間違えた問題はありません");return;}
+ renderQuizCard();modeName="間違えた問題の復習";questions=shuffle(questions);current=0;correctCount=0;loadQuestion();
+}
+function loadQuestion(){
+ const q=questions[current];
+ $("progress").textContent=`${modeName}：問題 ${current+1}/${questions.length}`;
+ $("jp").textContent=q.jp;$("en").textContent=q.en;
+ $("inputs").innerHTML=q.answers.map((a,i)=>{const label=nums[i]||"("+String(i+1)+")";return `<div class="answer-row"><div class="answer-label">${label}</div><input id="ans${i}" placeholder="${label} の答え" autocomplete="off"></div>`}).join("");
+ $("result").innerHTML="";$("reviewArea").classList.add("hidden");$("nextBtn").classList.add("hidden");$("checkBtn").classList.remove("hidden");
+ $("saveBtn").textContent=getIds(MANUAL_KEY).includes(String(q.id))?"★ 復習リスト登録済み":"☆ 復習リストに追加";
+ document.querySelector("#inputs input")?.focus();
+}
+function checkAnswer(){
+ const q=questions[current];let ok=true,html="";
+ q.answers.forEach((ans,i)=>{const label=nums[i]||"("+String(i+1)+")";const user=normalize($("ans"+i).value);const correct=normalize(ans);
+ if(user===correct)html+=`<div class="correct">✓ ${label} ${escapeHtml(ans)}</div>`;
+ else{html+=`<div class="wrong">✗ ${label} 正解: ${escapeHtml(ans)}</div>`;ok=false;}});
+ if(ok){correctCount++;html="<h3 class='correct'>正解！</h3>"+html;}
+ else{html="<h3 class='wrong'>不正解</h3>"+html;const ids=getIds(WRONG_KEY);ids.push(String(q.id));setIds(WRONG_KEY,ids);}
+ $("result").innerHTML=html;$("reviewArea").classList.remove("hidden");$("nextBtn").classList.remove("hidden");$("checkBtn").classList.add("hidden");updateStats();
+}
+function saveForReview(){const ids=getIds(MANUAL_KEY);ids.push(String(questions[current].id));setIds(MANUAL_KEY,ids);$("saveBtn").textContent="★ 復習リスト登録済み";updateStats();}
+function nextQuestion(){
+ current++;
+ if(current>=questions.length){$("quizCard").innerHTML=`<h2>学習終了</h2><p>${modeName}</p><h3>正解数 ${correctCount}/${questions.length}</h3><p>正答率 ${Math.round(correctCount/questions.length*100)}%</p><button id="backStart" class="primary" type="button">通常学習に戻る</button>`;$("backStart").addEventListener("click",startNormal);return;}
+ loadQuestion();
+}
+function clearStorage(){
+ if(confirm("端末内データを消去しますか？")){
+   localStorage.removeItem(STORAGE_KEY);localStorage.removeItem(MANUAL_KEY);localStorage.removeItem(WRONG_KEY);
+   allQuestions=[];selectedQuestionIndex=-1;updateStats();renderQuestionList();$("quizCard").innerHTML="<p>問題データを消去しました。</p>";setStatus("端末内データを消去しました。","notice");
+ }
+}
+
+function renderQuestionList(){
+ const kw=normalize($("searchBox").value);let html="";
+ allQuestions.forEach((q,idx)=>{const hay=normalize(`${q.id} ${q.jp} ${q.en} ${q.answers.join(" ")}`);if(kw&&!hay.includes(kw))return;
+ html+=`<div class="qitem ${idx===selectedQuestionIndex?'active':''}" data-index="${idx}"><div class="qid">ID: ${escapeHtml(q.id)}</div><div class="qjp">${escapeHtml(q.jp)}</div><div class="qen">${escapeHtml(q.en)}</div></div>`;});
+ $("questionList").innerHTML=html||"<p class='small'>該当する問題がありません。</p>";
+ document.querySelectorAll(".qitem").forEach(item=>item.addEventListener("click",()=>selectQuestion(Number(item.dataset.index))));
+}
+function selectQuestion(idx){selectedQuestionIndex=idx;const q=allQuestions[idx];$("editId").value=q.id;$("editJp").value=q.jp;$("editEn").value=q.en;$("editAnswers").value=q.answers.join("\n");$("editPreview").classList.add("hidden");renderQuestionList();}
+function newQuestion(){selectedQuestionIndex=-1;const maxId=allQuestions.reduce((m,q)=>{const n=parseInt(q.id,10);return Number.isFinite(n)?Math.max(m,n):m;},4000);$("editId").value=String(maxId+1);$("editJp").value="";$("editEn").value="";$("editAnswers").value="";$("editPreview").classList.add("hidden");renderQuestionList();$("editJp").focus();}
+function readEditorQuestion(){const id=$("editId").value.trim(),jp=$("editJp").value.trim(),en=$("editEn").value.trim();const answers=$("editAnswers").value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);if(!id||!jp||!en||!answers.length)throw new Error("ID、jp、en、answersを入力してください。");return {id:String(id),jp,en,answers};}
+function saveEditedQuestion(){try{const q=readEditorQuestion();if(selectedQuestionIndex>=0)allQuestions[selectedQuestionIndex]=q;else{allQuestions.push(q);selectedQuestionIndex=allQuestions.length-1;}const saved=saveQuestionsToDevice();updateStats();renderQuestionList();setStatus(saved?"編集を保存しました。":"編集は反映しましたが端末内保存に失敗しました。",saved?"oknotice":"errnotice");}catch(e){alert(e.message);}}
+function deleteEditedQuestion(){if(selectedQuestionIndex<0){alert("削除する問題を選んでください。");return;}if(!confirm("この問題を削除しますか？"))return;allQuestions.splice(selectedQuestionIndex,1);selectedQuestionIndex=-1;$("editId").value=$("editJp").value=$("editEn").value=$("editAnswers").value="";const saved=saveQuestionsToDevice();updateStats();renderQuestionList();setStatus(saved?"削除しました。":"削除は反映しましたが端末内保存に失敗しました。",saved?"oknotice":"errnotice");}
+function previewEditedQuestion(){try{const q=readEditorQuestion();$("editPreview").textContent=`ID: ${q.id}\n\n日本語:\n${q.jp}\n\n英文:\n${q.en}\n\n答え:\n${q.answers.map((a,i)=>(nums[i]||"("+String(i+1)+")")+" "+a).join("\n")}`;$("editPreview").className="oknotice";}catch(e){alert(e.message);}}
+function renumberQuestions(){if(!allQuestions.length){alert("問題がありません。");return;}const start=prompt("開始IDを入力してください。","4001");if(start===null)return;const n=parseInt(start,10);if(!Number.isFinite(n)){alert("数値を入力してください。");return;}allQuestions.forEach((q,i)=>q.id=String(n+i));selectedQuestionIndex=-1;const saved=saveQuestionsToDevice();renderQuestionList();updateStats();setStatus(saved?`IDを${n}から連番にしました。`:"IDは振り直しましたが端末内保存に失敗しました。",saved?"oknotice":"errnotice");}
+async function copyPrompt(){try{await navigator.clipboard.writeText($("promptText").value);alert("コピーしました。");}catch(e){alert("コピーできませんでした。手動でコピーしてください。");}}
+
+function bindButtons(){
+ $("btnLoadJson").addEventListener("click",loadFromTextareaAndSave);
+ $("btnPaste").addEventListener("click",pasteFromClipboard);
+ $("btnCopyJson").addEventListener("click",copyCurrentJSON);
+ $("btnDownload").addEventListener("click",downloadCurrentJSON);
+ $("btnStart").addEventListener("click",startNormal);
+ $("btnManualReview").addEventListener("click",startManualReview);
+ $("btnWrongReview").addEventListener("click",startWrongReview);
+ $("btnClear").addEventListener("click",clearStorage);
+ $("searchBox").addEventListener("input",renderQuestionList);
+ $("btnNew").addEventListener("click",newQuestion);
+ $("btnRenumber").addEventListener("click",renumberQuestions);
+ $("btnSaveEdit").addEventListener("click",saveEditedQuestion);
+ $("btnDeleteEdit").addEventListener("click",deleteEditedQuestion);
+ $("btnPreviewEdit").addEventListener("click",previewEditedQuestion);
+ $("btnCopyPrompt").addEventListener("click",copyPrompt);
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+ bindButtons();updateStats();renderQuestionList();
+ const saved=localStorage.getItem(STORAGE_KEY);
+ if(saved){try{allQuestions=validateQuestions(parseQuestionJSON(saved));updateStats();renderQuestionList();startNormal();setStatus(`端末内保存から ${allQuestions.length}問を読み込みました。`,"oknotice");setJsonStatus(`端末内保存から ${allQuestions.length}問を読み込みました。`,"oknotice");}catch(e){localStorage.removeItem(STORAGE_KEY);setStatus("保存データが壊れていたため削除しました。JSONを貼り付け直してください。","errnotice");}}
+});
+})();
+</script>
+</body>
+</html>
