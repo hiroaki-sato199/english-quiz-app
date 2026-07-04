@@ -3,96 +3,193 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>英語穴埋め学習 GitHub Pages版</title>
+<title>英語穴埋め学習 シンプル版</title>
 <style>
-*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;max-width:900px;margin:0 auto;padding:12px;background:#f5f7fb;color:#111827} .card{background:white;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 2px 10px #0001}h1{text-align:center;font-size:1.35rem}.row{display:flex;gap:8px;flex-wrap:wrap}button{border:0;border-radius:12px;padding:12px 14px;font-weight:700;font-size:16px;margin:4px 0}.primary{background:#2563eb;color:white}.plain{background:#e5e7eb}.success{background:#16a34a;color:white}.danger{background:#dc2626;color:white}.star{background:#f59e0b;color:white}input,textarea{width:100%;font-size:16px;padding:12px;border:1px solid #d1d5db;border-radius:12px;margin:6px 0}textarea{min-height:140px;font-family:ui-monospace,Menlo,monospace}.notice{white-space:pre-wrap;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;padding:12px;border-radius:12px}.ok{white-space:pre-wrap;background:#ecfdf5;border:1px solid #bbf7d0;color:#166534;padding:12px;border-radius:12px}.err{white-space:pre-wrap;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:12px;border-radius:12px}.badge{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;padding:4px 10px;margin:2px;font-size:.86rem}.jp{text-align:center;font-size:1.25rem;margin:18px 0}.en{text-align:center;font-size:1.1rem;line-height:1.8}.ansrow{display:flex;gap:10px;align-items:center}.lab{min-width:36px;font-weight:800}.hidden{display:none}.correct{color:#16a34a}.wrong{color:#dc2626}.grid{display:grid;grid-template-columns:1fr 1.2fr;gap:12px}@media(max-width:820px){.grid{grid-template-columns:1fr}}.list{max-height:330px;overflow:auto;border:1px solid #e5e7eb;border-radius:12px;padding:8px;background:#fafafa}.item{background:white;border:1px solid #e5e7eb;border-radius:10px;margin:6px 0;padding:10px}.item.active{background:#eff6ff;border-color:#2563eb}.small{color:#6b7280;font-size:.9rem}
+*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;max-width:820px;margin:0 auto;padding:12px;background:#f5f7fb;color:#111827}.card{background:#fff;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 2px 10px #0001}h1{text-align:center;font-size:1.35rem}.row{display:flex;gap:8px;flex-wrap:wrap}button{border:0;border-radius:12px;padding:12px 14px;font-weight:700;font-size:16px;margin:4px 0;cursor:pointer}.primary{background:#2563eb;color:#fff}.plain{background:#e5e7eb}.success{background:#16a34a;color:#fff}.danger{background:#dc2626;color:#fff}.star{background:#f59e0b;color:#fff}.notice{white-space:pre-wrap;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;padding:12px;border-radius:12px}.ok{white-space:pre-wrap;background:#ecfdf5;border:1px solid #bbf7d0;color:#166534;padding:12px;border-radius:12px}.err{white-space:pre-wrap;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:12px;border-radius:12px}.badge{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;padding:4px 10px;margin:2px;font-size:.86rem}.small{font-size:.9rem;color:#6b7280}.progress{font-weight:700;color:#6b7280;margin-bottom:14px}.jp{text-align:center;font-size:1.3rem;margin:20px 0}.en{text-align:center;font-size:1.12rem;line-height:1.9;margin:16px 0 20px}.answer-row{display:flex;align-items:center;gap:10px;margin:8px 0}.answer-label{min-width:36px;font-weight:800}input{width:100%;font-size:16px;padding:12px;border:1px solid #d1d5db;border-radius:12px}.correct{color:#16a34a}.wrong{color:#dc2626}.hidden{display:none!important}
 </style>
 </head>
 <body>
 <div class="card">
-<h1>英語穴埋め学習 GitHub Pages版</h1>
+<h1>英語穴埋め学習 シンプル版</h1>
 <div id="status" class="notice">questions.json を自動読み込み中...</div>
 <div class="row">
-<button id="start" class="primary">通常学習</button>
-<button id="reload" class="plain">questions.jsonを再読み込み</button>
-<button id="review" class="plain">保存した問題を復習</button>
-<button id="wrong" class="plain">間違えた問題を復習</button>
-<button id="clear" class="danger">履歴を消去</button>
+<button id="normalBtn" class="primary" type="button">通常学習</button>
+<button id="reloadBtn" class="plain" type="button">再読み込み</button>
+<button id="reviewBtn" class="plain" type="button">保存した問題を復習</button>
+<button id="wrongBtn" class="plain" type="button">間違えた問題を復習</button>
+<button id="clearBtn" class="danger" type="button">履歴を消去</button>
 </div>
 <div id="stats"></div>
+<p class="small">同じフォルダの <strong>questions.json</strong> を自動で読み込みます。手動読み込み機能とJSON編集機能はありません。</p>
 </div>
 
-<div id="quiz" class="card">questions.json を自動読み込み中です。</div>
-
-<div class="card">
-<h2>手動読み込み・バックアップ</h2>
-<p class="small">通常は同じフォルダの questions.json を自動読み込みします。失敗した場合だけここにJSONを貼り付けてください。</p>
-<textarea id="jsonArea" placeholder='[{"id":4001,"jp":"日本語訳","en":"I (①) English.","answers":["study"]}]'></textarea>
-<div class="row">
-<button id="loadPaste" class="primary">貼り付けJSONを読み込む</button>
-<button id="copyJson" class="plain">現在のJSONをコピー</button>
-<button id="downloadJson" class="plain">questions.jsonとして保存</button>
-</div>
-</div>
-
-<div class="card">
-<h2>読み込んだJSONを編集</h2>
-<p class="small">編集内容はブラウザ内に保存されます。GitHub上の questions.json を更新するには「現在のJSONをコピー」または保存ファイルを使ってください。</p>
-<div class="grid">
-<div>
-<input id="search" placeholder="検索：ID・日本語・英語">
-<div class="row"><button id="newQ" class="plain">＋ 新規問題</button><button id="renum" class="plain">ID連番</button></div>
-<div id="list" class="list">問題一覧</div>
-</div>
-<div>
-<label>ID</label><input id="eid">
-<label>日本語訳 jp</label><textarea id="ejp"></textarea>
-<label>穴埋め英文 en</label><textarea id="een"></textarea>
-<label>答え answers（1行に1語）</label><textarea id="eans"></textarea>
-<div class="row"><button id="saveEdit" class="success">編集を保存</button><button id="deleteEdit" class="danger">削除</button></div>
-</div>
-</div>
-</div>
+<div id="quizCard" class="card"><p>questions.json を読み込み中です。</p></div>
 
 <script>
+(function(){
+"use strict";
 const nums=["①","②","③","④","⑤","⑥","⑦","⑧","⑨","⑩","⑪","⑫","⑬","⑭","⑮","⑯","⑰","⑱","⑲","⑳"];
-const K="eq_questions_github_auto_v1", R="eq_review_v1", W="eq_wrong_v1";
-let all=[], qs=[], cur=0, score=0, mode="通常学習", selected=-1;
+const REVIEW_KEY="simpleQuizReviewIds";
+const WRONG_KEY="simpleQuizWrongIds";
+let allQuestions=[], questions=[], current=0, correctCount=0, modeName="通常学習";
 const $=id=>document.getElementById(id);
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function st(t,c="notice"){$("status").textContent=t;$("status").className=c}
-function ids(k){try{return JSON.parse(localStorage.getItem(k)||"[]").map(String)}catch(e){return[]}}
-function setids(k,v){localStorage.setItem(k,JSON.stringify([...new Set(v.map(String))]))}
-function norm(s){return String(s||"").trim().toLowerCase().replace(/\s+/g," ")}
-function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function clean(t){t=String(t||"").trim().replace(/^\uFEFF/,"");if(t.startsWith("```"))t=t.replace(/^```(?:json)?\s*/i,"").replace(/\s*```$/,"").trim();return t}
-function parse(t){let c=clean(t),d;if(!c)throw Error("JSONが空です");try{d=JSON.parse(c)}catch(e){let a=c.indexOf("["),b=c.lastIndexOf("]");if(a>=0&&b>a)d=JSON.parse(c.slice(a,b+1));else throw e} if(Array.isArray(d))return d;if(d&&Array.isArray(d.questions))return d.questions;throw Error("JSONは配列、または {questions:[...]} にしてください")}
-function valid(arr){return parse(JSON.stringify(arr)).map((q,i)=>{if(!q||typeof q!="object")throw Error((i+1)+"番目が不正です");if(q.id==null||q.id==="")q.id=Date.now()+i;if(typeof q.jp!="string"||typeof q.en!="string"||!Array.isArray(q.answers))throw Error((i+1)+"番目に jp/en/answers が必要です");return{id:String(q.id),jp:q.jp,en:q.en,answers:q.answers.map(String)}})}
-function save(){localStorage.setItem(K,JSON.stringify(all))}
-function stats(){$("stats").innerHTML=`<span class="badge">総問題数 ${all.length}</span><span class="badge">保存済み ${ids(R).length}</span><span class="badge">間違えた問題 ${ids(W).length}</span>`}
-function apply(arr,label){all=valid(arr);save();stats();renderList();startNormal();st(`${label}から ${all.length}問を読み込みました。`,"ok")}
-async function autoLoad(force=false){try{st("questions.json を読み込み中...");let res=await fetch("questions.json?cache="+Date.now(),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);apply(parse(await res.text()),"questions.json")}catch(e){let saved=localStorage.getItem(K);if(saved&&!force){try{apply(parse(saved),"ブラウザ内保存");st("questions.jsonは読めませんでしたが、ブラウザ内保存データを読み込みました。\n原因: "+e.message,"notice");return}catch(_){}}st("questions.json の自動読み込みに失敗しました。\n原因: "+e.message+"\n\nindex.html と questions.json が同じ場所にあるか確認してください。","err")}}
-function renderQuiz(){ $("quiz").innerHTML=`<div id="prog" class="small"></div><div id="jp" class="jp"></div><div id="en" class="en"></div><div id="inputs"></div><button id="check" class="primary">答え合わせ</button><div id="result"></div><div id="reviewBox" class="hidden"><button id="saveReview" class="star">☆ 復習リストに追加</button></div><button id="next" class="success hidden">次の問題</button>`;$("check").onclick=check;$("saveReview").onclick=saveReview;$("next").onclick=next}
-function startNormal(){if(!all.length){st("問題が読み込まれていません。","err");return}renderQuiz();mode="通常学習";qs=shuffle([...all]);cur=0;score=0;loadQ()}
-function startReview(){let s=ids(R);qs=all.filter(q=>s.includes(q.id));if(!qs.length)return alert("保存した問題はありません");renderQuiz();mode="保存した問題の復習";qs=shuffle(qs);cur=0;score=0;loadQ()}
-function startWrong(){let s=ids(W);qs=all.filter(q=>s.includes(q.id));if(!qs.length)return alert("間違えた問題はありません");renderQuiz();mode="間違えた問題の復習";qs=shuffle(qs);cur=0;score=0;loadQ()}
-function loadQ(){let q=qs[cur];$("prog").textContent=`${mode}：問題 ${cur+1}/${qs.length}`;$("jp").textContent=q.jp;$("en").textContent=q.en;$("inputs").innerHTML=q.answers.map((a,i)=>`<div class="ansrow"><div class="lab">${nums[i]||i+1}</div><input id="a${i}" placeholder="${nums[i]||i+1} の答え"></div>`).join("");$("result").innerHTML="";$("reviewBox").classList.add("hidden");$("next").classList.add("hidden");$("check").classList.remove("hidden");$("saveReview").textContent=ids(R).includes(q.id)?"★ 復習リスト登録済み":"☆ 復習リストに追加";document.querySelector("#inputs input")?.focus()}
-function check(){let q=qs[cur],ok=true,h="";q.answers.forEach((ans,i)=>{let lab=nums[i]||i+1;if(norm($("a"+i).value)==norm(ans))h+=`<div class="correct">✓ ${lab} ${esc(ans)}</div>`;else{ok=false;h+=`<div class="wrong">✗ ${lab} 正解: ${esc(ans)}</div>`}});if(ok){score++;h="<h3 class='correct'>正解！</h3>"+h}else{h="<h3 class='wrong'>不正解</h3>"+h;let w=ids(W);w.push(q.id);setids(W,w)}$("result").innerHTML=h;$("reviewBox").classList.remove("hidden");$("next").classList.remove("hidden");$("check").classList.add("hidden");stats()}
-function saveReview(){let r=ids(R);r.push(qs[cur].id);setids(R,r);$("saveReview").textContent="★ 復習リスト登録済み";stats()}
-function next(){cur++;if(cur>=qs.length){$("quiz").innerHTML=`<h2>学習終了</h2><p>${mode}</p><h3>正解数 ${score}/${qs.length}</h3><p>正答率 ${Math.round(score/qs.length*100)}%</p><button id="again" class="primary">通常学習に戻る</button>`;$("again").onclick=startNormal;return}loadQ()}
-function renderList(){let kw=norm($("search").value),h="";all.forEach((q,i)=>{let hay=norm(`${q.id} ${q.jp} ${q.en} ${q.answers.join(" ")}`);if(kw&&!hay.includes(kw))return;h+=`<div class="item ${i==selected?"active":""}" data-i="${i}"><b>ID: ${esc(q.id)}</b><br>${esc(q.jp)}<br><span class="small">${esc(q.en)}</span></div>`});$("list").innerHTML=h||"該当なし";document.querySelectorAll(".item").forEach(x=>x.onclick=()=>selectQ(+x.dataset.i))}
-function selectQ(i){selected=i;let q=all[i];$("eid").value=q.id;$("ejp").value=q.jp;$("een").value=q.en;$("eans").value=q.answers.join("\n");renderList()}
-function newQ(){selected=-1;let m=all.reduce((m,q)=>Math.max(m,parseInt(q.id)||4000),4000);$("eid").value=m+1;$("ejp").value="";$("een").value="";$("eans").value="";renderList()}
-function readEdit(){let q={id:$("eid").value.trim(),jp:$("ejp").value.trim(),en:$("een").value.trim(),answers:$("eans").value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean)};if(!q.id||!q.jp||!q.en||!q.answers.length)throw Error("ID、jp、en、answersを入力してください");return q}
-function saveEdit(){try{let q=readEdit();if(selected>=0)all[selected]=q;else{all.push(q);selected=all.length-1}save();stats();renderList();st("編集をブラウザ内に保存しました。GitHubのquestions.jsonにはまだ反映されていません。","ok")}catch(e){alert(e.message)}}
-function delEdit(){if(selected<0)return alert("削除する問題を選んでください");if(confirm("削除しますか？")){all.splice(selected,1);selected=-1;$("eid").value=$("ejp").value=$("een").value=$("eans").value="";save();stats();renderList();st("削除しました。","ok")}}
-function renum(){let start=parseInt(prompt("開始ID","4001"),10);if(!Number.isFinite(start))return;all.forEach((q,i)=>q.id=String(start+i));save();stats();renderList();st("IDを連番にしました。","ok")}
-$("start").onclick=startNormal;$("reload").onclick=()=>autoLoad(true);$("review").onclick=startReview;$("wrong").onclick=startWrong;$("clear").onclick=()=>{if(confirm("履歴とブラウザ内保存を消去しますか？")){localStorage.removeItem(K);localStorage.removeItem(R);localStorage.removeItem(W);all=[];stats();renderList();$("quiz").textContent="消去しました。"}};
-$("loadPaste").onclick=()=>{try{apply(parse($("jsonArea").value),"貼り付けJSON")}catch(e){st("貼り付けJSONの読み込み失敗: "+e.message,"err")}};
-$("copyJson").onclick=async()=>{if(!all.length)return alert("問題がありません");let t=JSON.stringify(all,null,2);try{await navigator.clipboard.writeText(t);st("現在のJSONをコピーしました。","ok")}catch(e){$("jsonArea").value=t;st("貼り付け欄にJSONを表示しました。","notice")}};
-$("downloadJson").onclick=()=>{if(!all.length)return alert("問題がありません");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(all,null,2)],{type:"application/json"}));a.download="questions.json";a.click();URL.revokeObjectURL(a.href)};
-$("search").oninput=renderList;$("newQ").onclick=newQ;$("saveEdit").onclick=saveEdit;$("deleteEdit").onclick=delEdit;$("renum").onclick=renum;
-stats();renderList();autoLoad(false);
+
+function setStatus(message,type){$("status").textContent=message;$("status").className=type||"notice";}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+function normalize(s){return String(s||"").trim().toLowerCase().replace(/\s+/g," ");}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function getIds(key){try{return JSON.parse(localStorage.getItem(key)||"[]").map(String);}catch(e){return[];}}
+function setIds(key,values){localStorage.setItem(key,JSON.stringify([...new Set(values.map(String))]));}
+function updateStats(){
+  $("stats").innerHTML=`<span class="badge">総問題数 ${allQuestions.length}</span>
+  <span class="badge">保存済み ${getIds(REVIEW_KEY).length}</span>
+  <span class="badge">間違えた問題 ${getIds(WRONG_KEY).length}</span>`;
+}
+function parseQuestionJSON(text){
+  let t=String(text||"").trim().replace(/^\uFEFF/,"");
+  if(!t)throw new Error("questions.json が空です。");
+  const data=JSON.parse(t);
+  if(Array.isArray(data))return data;
+  if(data&&Array.isArray(data.questions))return data.questions;
+  if(data&&Array.isArray(data.data))return data.data;
+  throw new Error("JSONの最上位は配列、または {questions:[...]} にしてください。");
+}
+function validateQuestions(data){
+  if(!Array.isArray(data))throw new Error("JSONの最上位は配列にしてください。");
+  return data.map((q,i)=>{
+    if(!q||typeof q!=="object")throw new Error(`${i+1}番目がオブジェクトではありません。`);
+    if(q.id===undefined||q.id===null||q.id==="")q.id=i+1;
+    if(typeof q.jp!=="string")throw new Error(`${i+1}番目の jp がありません。`);
+    if(typeof q.en!=="string")throw new Error(`${i+1}番目の en がありません。`);
+    if(!Array.isArray(q.answers))throw new Error(`${i+1}番目の answers が配列ではありません。`);
+    return {id:String(q.id),jp:q.jp,en:q.en,answers:q.answers.map(String)};
+  });
+}
+async function loadQuestionsJson(){
+  try{
+    setStatus("questions.json を読み込み中...","notice");
+    $("quizCard").innerHTML="<p>questions.json を読み込み中です。</p>";
+    const res=await fetch("questions.json?cache="+Date.now(),{cache:"no-store"});
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    const text=await res.text();
+    allQuestions=validateQuestions(parseQuestionJSON(text));
+    updateStats();
+    setStatus(`questions.json から ${allQuestions.length}問を読み込みました。`,"ok");
+    startNormal();
+  }catch(e){
+    setStatus("questions.json の読み込みに失敗しました。\n\n原因:\n"+e.message+
+    "\n\n確認してください:\n- index.html と questions.json が同じフォルダにある\n- ファイル名が questions.json になっている\n- JSON形式が正しい\n- ブラウザで /questions.json を直接開ける","err");
+    $("quizCard").innerHTML="<p>問題を読み込めませんでした。</p>";
+  }
+}
+function renderQuizCard(){
+  $("quizCard").innerHTML=`
+  <div id="progress" class="progress"></div>
+  <div id="jp" class="jp"></div>
+  <div id="en" class="en"></div>
+  <div id="inputs"></div>
+  <button id="checkBtn" class="primary" type="button">答え合わせ</button>
+  <div id="result"></div>
+  <div id="reviewArea" class="hidden"><button id="saveReviewBtn" class="star" type="button">☆ 復習リストに追加</button></div>
+  <button id="nextBtn" class="success hidden" type="button">次の問題</button>`;
+  $("checkBtn").addEventListener("click",checkAnswer);
+  $("saveReviewBtn").addEventListener("click",saveForReview);
+  $("nextBtn").addEventListener("click",nextQuestion);
+}
+function startNormal(){
+  if(allQuestions.length===0){setStatus("問題が読み込まれていません。","err");return;}
+  renderQuizCard();modeName="通常学習";questions=shuffle([...allQuestions]);current=0;correctCount=0;loadQuestion();
+}
+function startReview(){
+  const ids=getIds(REVIEW_KEY);
+  questions=allQuestions.filter(q=>ids.includes(String(q.id)));
+  if(questions.length===0){alert("保存した問題はありません。");return;}
+  renderQuizCard();modeName="保存した問題の復習";questions=shuffle(questions);current=0;correctCount=0;loadQuestion();
+}
+function startWrong(){
+  const ids=getIds(WRONG_KEY);
+  questions=allQuestions.filter(q=>ids.includes(String(q.id)));
+  if(questions.length===0){alert("間違えた問題はありません。");return;}
+  renderQuizCard();modeName="間違えた問題の復習";questions=shuffle(questions);current=0;correctCount=0;loadQuestion();
+}
+function loadQuestion(){
+  const q=questions[current];
+  $("progress").textContent=`${modeName}：問題 ${current+1}/${questions.length}`;
+  $("jp").textContent=q.jp;
+  $("en").textContent=q.en;
+  $("inputs").innerHTML=q.answers.map((ans,i)=>{
+    const label=nums[i]||"("+String(i+1)+")";
+    return `<div class="answer-row"><div class="answer-label">${label}</div><input id="ans${i}" placeholder="${label} の答え" autocomplete="off"></div>`;
+  }).join("");
+  $("result").innerHTML="";
+  $("reviewArea").classList.add("hidden");
+  $("nextBtn").classList.add("hidden");
+  $("checkBtn").classList.remove("hidden");
+  $("saveReviewBtn").textContent=getIds(REVIEW_KEY).includes(String(q.id))?"★ 復習リスト登録済み":"☆ 復習リストに追加";
+  document.querySelector("#inputs input")?.focus();
+}
+function checkAnswer(){
+  const q=questions[current];
+  let ok=true, html="";
+  q.answers.forEach((ans,i)=>{
+    const label=nums[i]||"("+String(i+1)+")";
+    if(normalize($("ans"+i).value)===normalize(ans)){
+      html+=`<div class="correct">✓ ${label} ${escapeHtml(ans)}</div>`;
+    }else{
+      ok=false;
+      html+=`<div class="wrong">✗ ${label} 正解: ${escapeHtml(ans)}</div>`;
+    }
+  });
+  if(ok){correctCount++;html="<h3 class='correct'>正解！</h3>"+html;}
+  else{
+    html="<h3 class='wrong'>不正解</h3>"+html;
+    const wrong=getIds(WRONG_KEY);wrong.push(String(q.id));setIds(WRONG_KEY,wrong);
+  }
+  $("result").innerHTML=html;
+  $("reviewArea").classList.remove("hidden");
+  $("nextBtn").classList.remove("hidden");
+  $("checkBtn").classList.add("hidden");
+  updateStats();
+}
+function saveForReview(){
+  const ids=getIds(REVIEW_KEY);
+  ids.push(String(questions[current].id));
+  setIds(REVIEW_KEY,ids);
+  $("saveReviewBtn").textContent="★ 復習リスト登録済み";
+  updateStats();
+}
+function nextQuestion(){
+  current++;
+  if(current>=questions.length){
+    $("quizCard").innerHTML=`<h2>学習終了</h2><p>${modeName}</p><h3>正解数 ${correctCount}/${questions.length}</h3><p>正答率 ${Math.round(correctCount/questions.length*100)}%</p><button id="againBtn" class="primary" type="button">通常学習に戻る</button>`;
+    $("againBtn").addEventListener("click",startNormal);
+    return;
+  }
+  loadQuestion();
+}
+function clearHistory(){
+  if(confirm("復習リストと間違えた履歴を消去しますか？")){
+    localStorage.removeItem(REVIEW_KEY);
+    localStorage.removeItem(WRONG_KEY);
+    updateStats();
+    setStatus("履歴を消去しました。","notice");
+  }
+}
+document.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    const checkBtn=$("checkBtn"), nextBtn=$("nextBtn");
+    if(checkBtn&&!checkBtn.classList.contains("hidden"))checkAnswer();
+    else if(nextBtn&&!nextBtn.classList.contains("hidden"))nextQuestion();
+  }
+});
+$("normalBtn").addEventListener("click",startNormal);
+$("reloadBtn").addEventListener("click",loadQuestionsJson);
+$("reviewBtn").addEventListener("click",startReview);
+$("wrongBtn").addEventListener("click",startWrong);
+$("clearBtn").addEventListener("click",clearHistory);
+updateStats();
+loadQuestionsJson();
+})();
 </script>
 </body>
 </html>
