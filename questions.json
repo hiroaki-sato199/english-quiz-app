@@ -1,134 +1,873 @@
 [
 {
 "id": 1,
-"jp": "イギリス留学の機会を学生に与える",
-"en": "(①) students (②) an opportunity to study in the U.K.",
+"jp": "最新のファッションを展示する",
+"en": "(①) the latest fashions",
 "answers": [
-"provide",
-"with"
+"display"
 ]
 },
 {
 "id": 2,
-"jp": "板にドリルで穴を開ける",
-"en": "drill a hole through a (①)",
+"jp": "実力を発揮する",
+"en": "(①) (②) (③) (④)",
 "answers": [
-"board"
+"display",
+"my",
+"real",
+"ability"
 ]
 },
 {
 "id": 3,
-"jp": "教育委員会",
-"en": "a (①) (②) education",
+"jp": "宝石を見せびらかす",
+"en": "(①) my jewelry",
 "answers": [
-"board",
-"of"
+"display"
 ]
 },
 {
 "id": 4,
-"jp": "バスに乗る",
-"en": "(①) a bus",
+"jp": "花火大会",
+"en": "a fireworks (①)",
 "answers": [
-"board"
+"display"
 ]
 },
 {
 "id": 5,
-"jp": "ビニールのごみ袋",
-"en": "plastic (①) (②)",
+"jp": "彼のことを信頼してよい，彼は秘密を守る。",
+"en": "You can (①) him; he keeps secrets.",
 "answers": [
-"garbage",
-"bags"
+"trust"
 ]
 },
 {
 "id": 6,
-"jp": "バーゲン品を買う",
-"en": "buy (①) on sale",
+"jp": "彼女を信頼する",
+"en": "(①) (②) (③) (④) her",
 "answers": [
-"items"
+"put",
+"my",
+"trust",
+"in"
 ]
 },
 {
 "id": 7,
-"jp": "その村に関する（1つの）ニュース",
-"en": "a (①) (②) about the village",
+"jp": "成功は君の努力（君がどれくらい努力するか）次第だ。",
+"en": "Your success (①) (②) how much effort you make.",
 "answers": [
-"news",
-"item"
+"depends",
+"on"
 ]
 },
 {
 "id": 8,
-"jp": "リストのすべての項目を確認する",
-"en": "check all the (①) (②) (③) (④) (⑤)",
+"jp": "私は両親に大学の学費を頼っている。",
+"en": "I (①) (②) my parents (③) university tuition.",
 "answers": [
-"items",
+"depend",
 "on",
-"the",
-"list"
+"for"
 ]
 },
 {
 "id": 9,
-"jp": "自転車の前輪",
-"en": "the front (①) of my bicycle",
+"jp": "彼なら頼っても大丈夫.",
+"en": "You can (①) (②) him.",
 "answers": [
-"wheel"
+"rely",
+"on"
 ]
 },
 {
 "id": 10,
-"jp": "運転する（ハンドルの所に座る）",
-"en": "sit (①) (②) (③)",
+"jp": "彼女の無事を祈る",
+"en": "(①) (②) her safety",
 "answers": [
-"at",
-"the",
-"wheel"
+"pray",
+"for"
 ]
 },
 {
 "id": 11,
-"jp": "カートを動かす",
-"en": "(①) a cart",
+"jp": "ミスを見逃してもらうよう，彼女にお願いする",
+"en": "(①) her (②) overlook my mistakes",
 "answers": [
-"wheel"
+"beg",
+"to"
 ]
 },
 {
 "id": 12,
-"jp": "授業中にメモをとる",
-"en": "(①) (②) in class",
+"jp": "食べ物をおねだりする",
+"en": "(①) (②) something to eat",
 "answers": [
-"take",
-"notes"
+"beg",
+"for"
 ]
 },
 {
 "id": 13,
-"jp": "50ポンド紙幣",
-"en": "a 50-pound (①)",
+"jp": "鶏肉より牛肉を好む",
+"en": "(①) beef (②) chicken",
 "answers": [
-"note"
+"prefer",
+"to"
 ]
 },
 {
 "id": 14,
-"jp": "私たちは大きな難題に直面していると指摘する",
-"en": "(①) (②) we face a real challenge",
+"jp": "全米が泣いた.",
+"en": "All America (①).",
 "answers": [
-"note",
-"that"
+"wept"
 ]
 },
 {
 "id": 15,
-"jp": "宿題の締め切りは金曜日だということを忘れずに注意してください",
-"en": "Please (①) (②) the homework is due on Friday.",
+"jp": "家事をするのが嫌いだ",
+"en": "(①) doing housework",
 "answers": [
-"note",
+"hate"
+]
+},
+{
+"id": 16,
+"jp": "そんなことを気にするな.",
+"en": "Don’t (①) (②) it.",
+"answers": [
+"worry",
+"about"
+]
+},
+{
+"id": 17,
+"jp": "人生は心配事が多い.",
+"en": "Life is full of (①).",
+"answers": [
+"worries"
+]
+},
+{
+"id": 18,
+"jp": "彼女の健康が心配だ.",
+"en": "(①) (②) (③) her health.",
+"answers": [
+"I’m",
+"anxious",
+"about"
+]
+},
+{
+"id": 19,
+"jp": "ベンが君に会いたがっているよ.",
+"en": "Ben (①) (②) (③) see you.",
+"answers": [
+"is",
+"anxious",
+"to"
+]
+},
+{
+"id": 20,
+"jp": "試験結果に満足していない.",
+"en": "(①) not (②) (③) the exam result.",
+"answers": [
+"I’m",
+"satisfied",
+"with"
+]
+},
+{
+"id": 21,
+"jp": "旅行者のニーズに応える",
+"en": "(①) the (②) of tourists",
+"answers": [
+"satisfy",
+"needs"
+]
+},
+{
+"id": 22,
+"jp": "歩きタバコを見かけると頭にくる（歩きタバコは私を苛立たせる）.",
+"en": "(①) really (②) (③) (④) I see people smoking while (they are) walking.",
+"answers": [
+"It",
+"annoys",
+"me",
+"when"
+]
+},
+{
+"id": 23,
+"jp": "ご迷惑をおかけしてすみませんが，手を貸していただけないでしょうか.",
+"en": "(①) (②) (③) (④) (⑤), (⑥) could you give me a hand?",
+"answers": [
+"I’m",
+"sorry",
+"to",
+"bother",
+"you",
+"but"
+]
+},
+{
+"id": 24,
+"jp": "わざわざ包装しなくて構いません.",
+"en": "Don’t (①) (②) giftwrap it.",
+"answers": [
+"bother",
+"to"
+]
+},
+{
+"id": 25,
+"jp": "雨の中，外出するのは面倒だと思う",
+"en": "find it a (①) to go out in the rain",
+"answers": [
+"bother"
+]
+},
+{
+"id": 26,
+"jp": "ほかの人に迷惑をかけないようにしなさい.",
+"en": "Don’t (①) other people.",
+"answers": [
+"disturb"
+]
+},
+{
+"id": 27,
+"jp": "睡眠［集中］を妨げる",
+"en": "(①) my sleep[concentration]",
+"answers": [
+"disturb"
+]
+},
+{
+"id": 28,
+"jp": "クモがこわい（クモに怯えさせられる）.",
+"en": "I (①) (②) (③) spiders.",
+"answers": [
+"am",
+"frightened",
+"of"
+]
+},
+{
+"id": 29,
+"jp": "10代のころ一生懸命勉強しなかったことを後悔している.",
+"en": "I (①) (②) I did not study[×should have studied] hard in my teens.",
+"answers": [
+"regret",
 "that"
+]
+},
+{
+"id": 30,
+"jp": "残念ながらあなたを助けられないと言わなければなりません.",
+"en": "I (①) (②) say that I cannot help you.",
+"answers": [
+"regret",
+"to"
+]
+},
+{
+"id": 31,
+"jp": "後悔はしていない.",
+"en": "I have no (①).",
+"answers": [
+"regrets"
+]
+},
+{
+"id": 32,
+"jp": "いくつかお願いがあるのですが.",
+"en": "Could you (①) me a couple of (②)? (=May I (③) a couple of (④) (⑤) you?)",
+"answers": [
+"do",
+"favors",
+"ask",
+"favors",
+"of"
+]
+},
+{
+"id": 33,
+"jp": "彼の提案に賛成だ",
+"en": "be (①) (②) (③) his proposal",
+"answers": [
+"in",
+"favor",
+"of"
+]
+},
+{
+"id": 34,
+"jp": "歴史に興味を持っている",
+"en": "(①) (②) (③) (④) history",
+"answers": [
+"have",
+"an",
+"interest",
+"in"
+]
+},
+{
+"id": 35,
+"jp": "君は祖父母と暮らすのが一番よい.",
+"en": "(①) (②) (③) (④) (⑤) (⑥) (⑦) stay with your grandparents.",
+"answers": [
+"It",
+"is",
+"in",
+"your",
+"best",
+"interests",
+"to"
+]
+},
+{
+"id": 36,
+"jp": "ローンの利子",
+"en": "the (①) on a loan",
+"answers": [
+"interest"
+]
+},
+{
+"id": 37,
+"jp": "あなたがその映画を見損ねたのは残念です.",
+"en": "(①) (②) (③) (④) (⑤) you missed the movie.",
+"answers": [
+"It",
+"is",
+"a",
+"pity",
+"that"
+]
+},
+{
+"id": 38,
+"jp": "その子どもをかわいそうに思う",
+"en": "(①) (②) (③) the child",
+"answers": [
+"feel",
+"pity",
+"for"
+]
+},
+{
+"id": 39,
+"jp": "嵐のために飛行機が遅れた.",
+"en": "Our flight was delayed (①) (②) the storm.",
+"answers": [
+"due",
+"to"
+]
+},
+{
+"id": 40,
+"jp": "報告書は月曜日が締め切りだ.",
+"en": "The report is (①) on Monday.",
+"answers": [
+"due"
+]
+},
+{
+"id": 41,
+"jp": "電車は9時に到着予定です.",
+"en": "The train (①) (②) (③) arrive at 9:00.",
+"answers": [
+"is",
+"due",
+"to"
+]
+},
+{
+"id": 42,
+"jp": "次の理由で彼の意見に賛成だ",
+"en": "agree with his opinion (①) (②) (③) (④) (⑤)",
+"answers": [
+"for",
+"the",
+"following",
+"reasons"
+]
+},
+{
+"id": 43,
+"jp": "理性と感情",
+"en": "(①) and emotion",
+"answers": [
+"reason"
+]
+},
+{
+"id": 44,
+"jp": "彼はかばんをバスの中に忘れてきたに違いないと推論した.",
+"en": "He (①) (②) he must have left his bag on the bus.",
+"answers": [
+"reasoned",
+"that"
+]
+},
+{
+"id": 45,
+"jp": "（論理的に）思考する力がある",
+"en": "have the ability to (①)",
+"answers": [
+"reason"
+]
+},
+{
+"id": 46,
+"jp": "インフレの結果として",
+"en": "(①) (②) (③) (④) inflation",
+"answers": [
+"as",
+"a",
+"result",
+"of"
+]
+},
+{
+"id": 47,
+"jp": "その事業は結果として成功した.",
+"en": "The project (①) (②) success.",
+"answers": [
+"resulted",
+"in"
+]
+},
+{
+"id": 48,
+"jp": "その地震の結果，深刻な損害が生じた.",
+"en": "Serious damage (①) (②) the earthquake.",
+"answers": [
+"resulted",
+"from"
+]
+},
+{
+"id": 49,
+"jp": "過度の飲酒は脳に悪影響を与える.",
+"en": "Drinking too much (①) a bad (②) (③) the brain.",
+"answers": [
+"has",
+"effect",
+"on"
+]
+},
+{
+"id": 50,
+"jp": "彼らに強い影響を与える",
+"en": "(①) (②) strong (③) (④) them",
+"answers": [
+"have",
+"a",
+"influence",
+"on"
+]
+},
+{
+"id": 51,
+"jp": "この本は私の考え方に深く影響を与えた.",
+"en": "This book (①) (②) my way of thinking.",
+"answers": [
+"deeply",
+"influenced"
+]
+},
+{
+"id": 52,
+"jp": "私たちは結局，空港で一夜を過ごすことになった.",
+"en": "We (①) (②) (③) the night at the airport.",
+"answers": [
+"ended",
+"up",
+"spending"
+]
+},
+{
+"id": 53,
+"jp": "5月の終わりに",
+"en": "at the (①) of May",
+"answers": [
+"end"
+]
+},
+{
+"id": 54,
+"jp": "目的のための手段",
+"en": "a (①) to an (②)",
+"answers": [
+"means",
+"end"
+]
+},
+{
+"id": 55,
+"jp": "面倒を引き起こす",
+"en": "(①) trouble",
+"answers": [
+"cause"
+]
+},
+{
+"id": 56,
+"jp": "その戦争の根源的な原因",
+"en": "(①) root (②) (③) the war",
+"answers": [
+"the",
+"cause",
+"of"
+]
+},
+{
+"id": 57,
+"jp": "睡眠不足は仕事（の出来栄え）に悪影響を及ぼす.",
+"en": "Lack of sleep (①) (②) your performance at work.",
+"answers": [
+"seriously",
+"affects"
+]
+},
+{
+"id": 58,
+"jp": "私の勉強の仕方",
+"en": "my (①) of studying",
+"answers": [
+"way"
+]
+},
+{
+"id": 59,
+"jp": "この点で私たちは異なる.",
+"en": "We differ (①) this (②).",
+"answers": [
+"in",
+"way"
+]
+},
+{
+"id": 60,
+"jp": "はるばる（長い道を）東京まで行く",
+"en": "(①) (②) (③) (④) (⑤) Tokyo",
+"answers": [
+"go",
+"all",
+"the",
+"way",
+"to"
+]
+},
+{
+"id": 61,
+"jp": "彼の知能指数は平均よりはるかに上だ.",
+"en": "His IQ is (①) above average.",
+"answers": [
+"way"
+]
+},
+{
+"id": 62,
+"jp": "責任ある方法でふるまう",
+"en": "behave (①) a responsible (②)",
+"answers": [
+"in",
+"manner"
+]
+},
+{
+"id": 63,
+"jp": "彼の話し方",
+"en": "his (①) of speaking",
+"answers": [
+"manner"
+]
+},
+{
+"id": 64,
+"jp": "マナーを知らない",
+"en": "have[×know] no (①)",
+"answers": [
+"manners"
+]
+},
+{
+"id": 65,
+"jp": "あなたの訪問の目的は何ですか.",
+"en": "What is (①) (②) (③) your visit?",
+"answers": [
+"the",
+"purpose",
+"of"
+]
+},
+{
+"id": 66,
+"jp": "健康のため",
+"en": "(①) (②) (③) (④) your health",
+"answers": [
+"for",
+"the",
+"sake",
+"of"
+]
+},
+{
+"id": 67,
+"jp": "日本酒はヨーロッパの人々の間で人気が出ている.",
+"en": "(①) is becoming popular among Europeans.",
+"answers": [
+"Sake"
+]
+},
+{
+"id": 68,
+"jp": "私のちょうど目の前で",
+"en": "(①) in front of me",
+"answers": [
+"right"
+]
+},
+{
+"id": 69,
+"jp": "君が正しいよ.",
+"en": "You are (①).",
+"answers": [
+"right"
+]
+},
+{
+"id": 70,
+"jp": "私の右手",
+"en": "my (①) hand",
+"answers": [
+"right"
+]
+},
+{
+"id": 71,
+"jp": "投票権",
+"en": "(①) (②) (③) vote",
+"answers": [
+"the",
+"right",
+"to"
+]
+},
+{
+"id": 72,
+"jp": "見ず知らずの人（完全に知らない人）",
+"en": "a (①) stranger",
+"answers": [
+"complete"
+]
+},
+{
+"id": 73,
+"jp": "このトンネルは完成するのに10年かかった.",
+"en": "This tunnel took ten years to (①).",
+"answers": [
+"complete"
+]
+},
+{
+"id": 74,
+"jp": "夏が待ち遠しい（ほとんど待てない）.",
+"en": "I (①) (②) wait for the summer.",
+"answers": [
+"can",
+"hardly"
+]
+},
+{
+"id": 75,
+"jp": "彼はめったに笑わない.",
+"en": "He (①) (②) smiles.",
+"answers": [
+"hardly",
+"ever"
+]
+},
+{
+"id": 76,
+"jp": "ほとんど毎日ジムに通っている.",
+"en": "I go to the gym (①) (②) day.",
+"answers": [
+"almost",
+"every"
+]
+},
+{
+"id": 77,
+"jp": "私にも一部責任がある.",
+"en": "I am (①) to blame.",
+"answers": [
+"partly"
+]
+},
+{
+"id": 78,
+"jp": "彼は本当に親切な人です.",
+"en": "He is (①) a kind person.",
+"answers": [
+"indeed"
+]
+},
+{
+"id": 79,
+"jp": "確かに彼は若いですが，とても頭がいい.",
+"en": "(①), he is young, but he is very smart.",
+"answers": [
+"Indeed"
+]
+},
+{
+"id": 80,
+"jp": "《ことわざ》弘法にも筆の誤り（ホメロスでさえも時には居眠りする）.",
+"en": "(①) Homer sometimes nods.",
+"answers": [
+"Even"
+]
+},
+{
+"id": 81,
+"jp": "事態はさらに難しくなった.",
+"en": "Things became (①) more difficult.",
+"answers": [
+"even"
+]
+},
+{
+"id": 82,
+"jp": "偶数（⇔奇数）",
+"en": "(①) numbers (⇔ odd numbers)",
+"answers": [
+"even"
+]
+},
+{
+"id": 83,
+"jp": "白くきれいにそろった歯",
+"en": "white, (①) teeth",
+"answers": [
+"even"
+]
+},
+{
+"id": 84,
+"jp": "ちょうど10ドルでした.",
+"en": "It cost 10 dollars (①).",
+"answers": [
+"even"
+]
+},
+{
+"id": 85,
+"jp": "オーストラリアの正確にはどこに滞在したのですか.",
+"en": "(①) (②) did you stay in Australia?",
+"answers": [
+"Where",
+"exactly"
+]
+},
+{
+"id": 86,
+"jp": "そのとおりです. / ちょっと違います（そのとおりではないです）.",
+"en": "(①). / Not (②).",
+"answers": [
+"Exactly",
+"exactly"
+]
+},
+{
+"id": 87,
+"jp": "土地の値段が徐々に上がっている.",
+"en": "Land prices are (①) (②).",
+"answers": [
+"gradually",
+"increasing"
+]
+},
+{
+"id": 88,
+"jp": "専門家でもただの人間だ. それゆえ，ミスが時々起きる.",
+"en": "Even experts are only human, (①) (②) mistakes sometimes occur.",
+"answers": [
+"and",
+"therefore"
+]
+},
+{
+"id": 89,
+"jp": "もし君が行けないのなら，君のお母さんが代わりに行ってもよい.",
+"en": "If you can’t make it, your mother may go (①).",
+"answers": [
+"instead"
+]
+},
+{
+"id": 90,
+"jp": "エレベーターの代わりに階段を使う",
+"en": "take the stairs (①) (②) the elevator",
+"answers": [
+"instead",
+"of"
+]
+},
+{
+"id": 91,
+"jp": "平日は午後11時まで営業しています.",
+"en": "We are open (①) 11 p.m. on weekdays.",
+"answers": [
+"until"
+]
+},
+{
+"id": 92,
+"jp": "私が戻るまでここにいて.",
+"en": "Stay here (①) I get back.",
+"answers": [
+"until"
+]
+},
+{
+"id": 93,
+"jp": "英語以外の（英語に加えて）外国語を勉強する",
+"en": "learn another foreign language (①) English",
+"answers": [
+"besides"
+]
+},
+{
+"id": 94,
+"jp": "外出するには遅すぎるし，おまけに，雪が降っている.",
+"en": "It’s too late to go out; (①), it’s snowing.",
+"answers": [
+"besides"
+]
+},
+{
+"id": 95,
+"jp": "彼以外は皆眠っていた.",
+"en": "Everybody was asleep (①) ((②)) him.",
+"answers": [
+"except",
+"for"
+]
+},
+{
+"id": 96,
+"jp": "1匹のイヌを除いて，公園には誰もいなかった.",
+"en": "(①) (②) a dog, the park was empty.",
+"answers": [
+"Except",
+"for"
 ]
 }
 ]
