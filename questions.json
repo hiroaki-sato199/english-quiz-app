@@ -136,7 +136,7 @@
 {
 "id": 16,
 "jp": "そんなことを気にするな.",
-"en": "Don’t (①) (②) it.",
+"en": "Don't (①) (②) it.",
 "answers": [
 "worry",
 "about"
@@ -155,7 +155,7 @@
 "jp": "彼女の健康が心配だ.",
 "en": "(①) (②) (③) her health.",
 "answers": [
-"I’m",
+"I'm",
 "anxious",
 "about"
 ]
@@ -175,7 +175,7 @@
 "jp": "試験結果に満足していない.",
 "en": "(①) not (②) (③) the exam result.",
 "answers": [
-"I’m",
+"I'm",
 "satisfied",
 "with"
 ]
@@ -205,7 +205,7 @@
 "jp": "ご迷惑をおかけしてすみませんが，手を貸していただけないでしょうか.",
 "en": "(①) (②) (③) (④) (⑤), (⑥) could you give me a hand?",
 "answers": [
-"I’m",
+"I'm",
 "sorry",
 "to",
 "bother",
@@ -216,7 +216,7 @@
 {
 "id": 24,
 "jp": "わざわざ包装しなくて構いません.",
-"en": "Don’t (①) (②) giftwrap it.",
+"en": "Don't (①) (②) giftwrap it.",
 "answers": [
 "bother",
 "to"
@@ -233,7 +233,7 @@
 {
 "id": 26,
 "jp": "ほかの人に迷惑をかけないようにしなさい.",
-"en": "Don’t (①) other people.",
+"en": "Don't (①) other people.",
 "answers": [
 "disturb"
 ]
@@ -806,7 +806,7 @@
 {
 "id": 89,
 "jp": "もし君が行けないのなら，君のお母さんが代わりに行ってもよい.",
-"en": "If you can’t make it, your mother may go (①).",
+"en": "If you can't make it, your mother may go (①).",
 "answers": [
 "instead"
 ]
@@ -847,7 +847,7 @@
 {
 "id": 94,
 "jp": "外出するには遅すぎるし，おまけに，雪が降っている.",
-"en": "It’s too late to go out; (①), it’s snowing.",
+"en": "It's too late to go out; (①), it's snowing.",
 "answers": [
 "besides"
 ]
