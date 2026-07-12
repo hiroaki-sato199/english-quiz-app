@@ -65,12 +65,32 @@ button:disabled{opacity:.5;cursor:not-allowed}
   border-radius:15px;
   box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
+.notice-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
 .notice-box h2{
-  margin:0 0 10px;
+  margin:0;
   color:#9a3412;
   font-size:1.15rem;
 }
+.notice-toggle{
+  width:auto;
+  min-width:86px;
+  margin:0;
+  padding:8px 12px;
+  background:#fff;
+  color:#9a3412;
+  border:1px solid #fdba74;
+  font-size:.92rem;
+}
+.notice-toggle:hover{
+  background:#ffedd5;
+}
 .notice-content{
+  margin-top:10px;
   line-height:1.75;
   overflow-wrap:anywhere;
 }
@@ -110,13 +130,24 @@ HTMLファイル内で直接書き換えてください。
 ============================================================
 -->
 <section class="notice-box">
-  <h2>お知らせ</h2>
+  <div class="notice-header">
+    <h2>お知らせ</h2>
+    <button
+      id="noticeToggle"
+      class="notice-toggle"
+      type="button"
+      aria-expanded="true"
+      aria-controls="noticeContent"
+      onclick="toggleNotice()"
+    >閉じる</button>
+  </div>
 
-  <div class="notice-content">
+  <div id="noticeContent" class="notice-content">
     <!-- ↓ この中を手動で編集してください ↓ -->
 
     <p>単語番号での指定はできません。ページ番号を指定してください。</p>
     <ul>
+      <li>例文のページ番号（奇数）を指定してください。</li>
       <li>215ページ以降は1ページずつ主題範囲を指定できます。</li>
       <li>それより前はテスト範囲ごとの出題になります。</li>
     </ul>
@@ -469,6 +500,16 @@ document.addEventListener("keydown",event=>{
     answered?nextQuestion():checkAnswer();
   }
 });
+
+
+function toggleNotice(){
+  const content = $("noticeContent");
+  const button = $("noticeToggle");
+  const isHidden = content.classList.toggle("hidden");
+
+  button.textContent = isHidden ? "開く" : "閉じる";
+  button.setAttribute("aria-expanded", String(!isHidden));
+}
 
 loadQuestions();
 </script>
