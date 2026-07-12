@@ -56,6 +56,33 @@ button:disabled{opacity:.5;cursor:not-allowed}
   background:rgba(255,255,255,.25)
 }
 .small{font-size:.86rem}
+
+.notice-box{
+  background:#fff7ed;
+  border:2px solid #fdba74;
+  padding:18px;
+  margin-bottom:16px;
+  border-radius:15px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.notice-box h2{
+  margin:0 0 10px;
+  color:#9a3412;
+  font-size:1.15rem;
+}
+.notice-content{
+  line-height:1.75;
+  overflow-wrap:anywhere;
+}
+.notice-content p{
+  margin:7px 0;
+}
+.notice-content ul,
+.notice-content ol{
+  margin:7px 0;
+  padding-left:1.5em;
+}
+
 @media(max-width:520px){
   body{padding:10px}.card{padding:17px}.jp{font-size:1.25rem}.en{font-size:1.1rem}
   .review-grid,.action-row{grid-template-columns:1fr}
@@ -63,6 +90,40 @@ button:disabled{opacity:.5;cursor:not-allowed}
 </style>
 </head>
 <body>
+
+<!--
+============================================================
+【使用上の注意・連絡事項の編集場所】
+
+下の <div class="notice-content"> から </div> までの内容を、
+HTMLファイル内で直接書き換えてください。
+
+使用できる例：
+<p>文章</p>
+<ul>
+  <li>箇条書き</li>
+</ul>
+<strong>太字</strong>
+<a href="https://example.com">リンク</a>
+
+このコメント部分は画面には表示されません。
+============================================================
+-->
+<section class="notice-box">
+  <h2>お知らせ</h2>
+
+  <div class="notice-content">
+    <!-- ↓ この中を手動で編集してください ↓ -->
+
+    <p>単語番号での指定はできません。ページ番号を指定してください。</p>
+    <ul>
+      <li>215ページ以降は1ページずつ主題範囲を指定できます。</li>
+      <li>それより前はテスト範囲ごとの出題になります。</li>
+    </ul>
+
+    <!-- ↑ この中を手動で編集してください ↑ -->
+  </div>
+</section>
 
 <section id="setupCard" class="card">
   <h1>英語穴埋め学習</h1>
