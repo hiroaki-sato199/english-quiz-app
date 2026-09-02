@@ -988,9 +988,9 @@
     "id": 102,
     "page": "39",
     "jp": "外国語教育に重点を置く",
-    "en": "(①) stress (②) foreign language education",
+    "en": "put (①)  (②) foreign language education",
     "answers": [
-      "put",
+      "stress",
       "on"
     ]
   },
@@ -1057,11 +1057,10 @@
     "id": 109,
     "page": "39",
     "jp": "投票権を行使する",
-    "en": "(①) the (②) (③) vote",
+    "en": "(①) the (②) to vote",
     "answers": [
       "exercise",
       "right",
-      "to"
     ]
   },
   {
@@ -1205,10 +1204,10 @@
     "id": 124,
     "page": "41",
     "jp": "服のセンスがよい",
-    "en": "(①) (②) taste (③) clothes",
+    "en": "(①) good (②) (③) clothes",
     "answers": [
       "have",
-      "good",
+      "taste",
       "in"
     ]
   },
@@ -1360,12 +1359,11 @@
     "id": 140,
     "page": "43",
     "jp": "東京の人口は大阪の人口より多い。",
-    "en": "The (①) (②) Tokyo is (③) than that (④) Osaka.",
+    "en": "The (①) (②) Tokyo is (③) than that of Osaka.",
     "answers": [
       "population",
       "of",
       "larger",
-      "of"
     ]
   },
   {
@@ -1729,10 +1727,8 @@
     "id": 178,
     "page": "47",
     "jp": "成功の代償を払う",
-    "en": "(①) (②) (③) of success",
+    "en": "pay the (①) of success",
     "answers": [
-      "pay",
-      "the",
       "price"
     ]
   },
@@ -1820,11 +1816,10 @@
     "id": 187,
     "page": "49",
     "jp": "シンガポールのタクシー料金（運賃）は安い。",
-    "en": "(①) (②) are (③) in Singapore.",
+    "en": "(①) (②) are low in Singapore.",
     "answers": [
       "Taxi",
-      "fares",
-      "low"
+      "fares"
     ]
   },
   {
@@ -1942,12 +1937,8 @@
     "id": 199,
     "page": "49",
     "jp": "節約のため",
-    "en": "(①) (②) (③) (④) (⑤)",
+    "en": "for the sake of (①)",
     "answers": [
-      "for",
-      "the",
-      "sake",
-      "of",
       "economy"
     ]
   },
@@ -1964,12 +1955,9 @@
     "id": 201,
     "page": "51",
     "jp": "そのミスで財産を失った。",
-    "en": "That mistake (①) (②) (③) (④).",
+    "en": "That mistake (①) me my fortune.",
     "answers": [
-      "cost",
-      "me",
-      "my",
-      "fortune"
+      "cost"
     ]
   },
   {
@@ -2024,10 +2012,9 @@
     "id": 207,
     "page": "51",
     "jp": "困難な仕事を成し遂げる",
-    "en": "(①) (②) difficult (③)",
+    "en": "(①) a difficult (②)",
     "answers": [
       "accomplish",
-      "a",
       "task"
     ]
   },
@@ -2044,10 +2031,9 @@
     "id": 209,
     "page": "51",
     "jp": "勤勉との評判を得る",
-    "en": "(①) (②) (③) as a hard worker",
+    "en": "(①) a (②) as a hard worker",
     "answers": [
       "earn",
-      "a",
       "reputation"
     ]
   },
@@ -2170,12 +2156,11 @@
     "id": 222,
     "page": "53",
     "jp": "トラは絶滅の危機にある。",
-    "en": "Tigers are (①) (②) (③) (④).",
+    "en": "Tigers are (①) (②) (③) extinction.",
     "answers": [
       "in",
       "danger",
-      "of",
-      "extinction"
+      "of"
     ]
   },
   {
@@ -3044,12 +3029,10 @@
     "id": 313,
     "page": "63",
     "jp": "彼のためにパーティを開く",
-    "en": "(①) (②) (③) (④) him",
+    "en": "(①) a (②) for him",
     "answers": [
       "throw",
-      "a",
-      "party",
-      "for"
+      "party"
     ]
   },
   {
@@ -5538,10 +5521,11 @@
     "id": 569,
     "page": "97",
     "jp": "貧困に陥る",
-    "en": "be (①) (②)",
+    "en": "be (①) (②) (③)",
     "answers": [
       "reduced",
-      "to"
+      "to",
+      "poverty"
     ]
   },
   {
