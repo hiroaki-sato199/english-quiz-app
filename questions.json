@@ -5521,11 +5521,10 @@
     "id": 569,
     "page": "97",
     "jp": "貧困に陥る",
-    "en": "be (①) (②) (③)",
+    "en": "be (①) (②) poverty",
     "answers": [
       "reduced",
-      "to",
-      "poverty"
+      "to"
     ]
   },
   {
@@ -14455,12 +14454,10 @@
     "id": 1476,
     "page": 221,
     "jp": "歌手として高く評価されている",
-    "en": "(①) (②) (③) (④) a singer",
+    "en": "be (①) (②) as a singer",
     "answers": [
-      "be",
       "highly",
-      "regarded",
-      "as"
+      "regarded"
     ]
   },
   {
@@ -14687,12 +14684,11 @@
     "id": 1499,
     "page": 225,
     "jp": "古いおもちゃを処分する",
-    "en": "(①) (②) (③) (④) my old toys",
+    "en": "(①) (②) (③) my old toys",
     "answers": [
       "get",
       "rid",
-      "of",
-      "my"
+      "of"
     ]
   },
   {
@@ -15008,9 +15004,8 @@
     "id": 1532,
     "page": 229,
     "jp": "大気中の氷の結晶",
-    "en": "ice crystals (①) (②) (③)",
+    "en": "ice crystals in (①) (②)",
     "answers": [
-      "in",
       "the",
       "atmosphere"
     ]
@@ -15805,8 +15800,9 @@
     "id": 1613,
     "page": 245,
     "jp": "どのような（種類の）石けんを使っているの.",
-    "en": "What sort (①) soap do you use?",
+    "en": "What  (①) (②) soap do you use?",
     "answers": [
+      "sort",
       "of"
     ]
   },
@@ -15814,9 +15810,10 @@
     "id": 1614,
     "page": 245,
     "jp": "今日はちょっと疲れている.",
-    "en": "I’m (①) of tired today.",
+    "en": "I’m (①) (②) tired today.",
     "answers": [
-      "sort"
+      "sort",
+      "of"
     ]
   },
   {
